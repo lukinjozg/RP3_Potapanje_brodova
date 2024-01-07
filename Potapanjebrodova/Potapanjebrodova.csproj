@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{24426819-B79B-4823-8DE6-09D615F46443}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Potapanje_brodova</RootNamespace>
-    <AssemblyName>Potapanje brodova</AssemblyName>
+    <RootNamespace>Potapanjebrodova</RootNamespace>
+    <AssemblyName>Potapanjebrodova</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -65,6 +65,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

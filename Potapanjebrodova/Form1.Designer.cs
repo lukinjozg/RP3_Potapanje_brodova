@@ -1,4 +1,4 @@
-﻿namespace Potapanje_brodova
+﻿namespace Potapanjebrodova
 {
     partial class Form1
     {

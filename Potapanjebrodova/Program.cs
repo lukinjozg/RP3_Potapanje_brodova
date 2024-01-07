@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Potapanje_brodova
+namespace Potapanjebrodova
 {
     internal static class Program
     {
