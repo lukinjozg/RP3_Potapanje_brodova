@@ -8,3 +8,4 @@ C:\Users\User\Desktop\Lukine stvari\Zadaće\rp3\RP3_Potapanje_brodova\Potapanjeb
 C:\Users\User\Desktop\Lukine stvari\Zadaće\rp3\RP3_Potapanje_brodova\Potapanjebrodova\obj\Debug\Potapanjebrodova.csproj.CoreCompileInputs.cache
 C:\Users\User\Desktop\Lukine stvari\Zadaće\rp3\RP3_Potapanje_brodova\Potapanjebrodova\obj\Debug\Potapanjebrodova.exe
 C:\Users\User\Desktop\Lukine stvari\Zadaće\rp3\RP3_Potapanje_brodova\Potapanjebrodova\obj\Debug\Potapanjebrodova.pdb
+C:\Users\User\Desktop\Lukine stvari\Zadaće\rp3\RP3_Potapanje_brodova\Potapanjebrodova\obj\Debug\Potapanjebrodova.Form2.resources

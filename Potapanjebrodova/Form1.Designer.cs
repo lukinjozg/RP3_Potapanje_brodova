@@ -134,7 +134,8 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Message = new System.Windows.Forms.Label();
+            this.PlayButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -1419,17 +1420,27 @@
             this.button5.Text = "Brod5";
             this.button5.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // Message
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.textBox1.Location = new System.Drawing.Point(470, 46);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(318, 35);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.Text = "Postavite brodove za bitku!";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.Message.AutoSize = true;
+            this.Message.Font = new System.Drawing.Font("Microsoft YaHei UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Message.Location = new System.Drawing.Point(458, 46);
+            this.Message.Name = "Message";
+            this.Message.Size = new System.Drawing.Size(331, 26);
+            this.Message.TabIndex = 7;
+            this.Message.Text = "Postavite svoje brodove za bitku!";
+            this.Message.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.Message.Click += new System.EventHandler(this.label101_Click);
+            // 
+            // PlayButton
+            // 
+            this.PlayButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.PlayButton.Location = new System.Drawing.Point(562, 219);
+            this.PlayButton.Name = "PlayButton";
+            this.PlayButton.Size = new System.Drawing.Size(124, 63);
+            this.PlayButton.TabIndex = 8;
+            this.PlayButton.Text = "Pokreni igru!";
+            this.PlayButton.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -1437,7 +1448,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.PlayButton);
+            this.Controls.Add(this.Message);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button3);
@@ -1561,7 +1573,8 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label Message;
+        private System.Windows.Forms.Button PlayButton;
     }
 }
 
