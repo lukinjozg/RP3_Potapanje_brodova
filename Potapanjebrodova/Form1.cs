@@ -87,6 +87,7 @@ namespace Potapanjebrodova
 
             InitializeLablesAndButtons();
             ChangeLabelsToMatchMatix(Program.igrac_matrix);
+
         }
 
         private bool InBoard(int i, int j)
