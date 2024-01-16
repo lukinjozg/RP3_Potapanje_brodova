@@ -89,5 +89,22 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\boat4V.png" />
+    <None Include="Resources\boat4H.png" />
+    <None Include="Resources\boat3V.png" />
+    <None Include="Resources\boat3H.png" />
+    <None Include="Resources\boat2V.png" />
+    <None Include="Resources\boat2H.png" />
+    <None Include="Resources\boat1V.png" />
+    <None Include="Resources\boat1H.png" />
+    <None Include="Resources\boat0V.png" />
+    <None Include="Resources\boat0H.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\explosion.png" />
+    <None Include="Resources\explosion1.png" />
+    <Content Include="Resources\more.PNG" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

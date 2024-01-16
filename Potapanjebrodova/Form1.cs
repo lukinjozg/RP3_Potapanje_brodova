@@ -8,20 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.IO;
 
 namespace Potapanjebrodova
 {
     public partial class Form1 : Form
     {
-        Thread th;
+        private Thread th;
         private Label[] labels = new Label[100];
         private Button[] buttons = new Button[5];
         private EventHandler[] ButtonHandler = new EventHandler[5];
         private EventHandler[] LabelHandler = new EventHandler[100];
 
         private bool[] existing_buttons = new bool[] {true,true,true,true,true};
-
-        private int[] boats = new int[] {2,2,3,4,5};
+        private int[] boats = new int[] {2,3,3,4,5};
         private string[] boat_names = new string[] { "A", "B", "C", "D","E"};
         private void InitializeMatrix()
         {
@@ -29,27 +29,42 @@ namespace Potapanjebrodova
             {
                 for (int j = 0; j < 10; j++)
                 {
-                    Program.igrac_matrix[i, j] = "O";
+                    Program.igrac_matrix[i, j] = "";
                 }
             }
+        }
+
+        private void ZapisiPozicijuBroda(int boat_index,int x1, int y1, int x2, int y2)
+        {
+            Program.boat_pos[boat_index,0] = x1;
+            Program.boat_pos[boat_index,1] = y1;
+            Program.boat_pos[boat_index,2] = x2;
+            Program.boat_pos[boat_index,3] = y2;
         }
 
         private void InitializeLablesAndButtons()
         {
             PlayButton.Click += buttonOpenForm2_Click;
-            //PlayButton.Visible = false;
+            //ayButton.Visible = false;
             for (int i = 0; i < 100; i++)
             {
+                int k = i;
                 labels[i] = Controls.Find($"label{i + 1}", true)[0] as Label;
+                tableLayoutPanel1.Controls.Add(labels[k], k%10, k/10);
+                labels[k].BackColor = Color.Transparent;
             }
 
             for (int i = 0; i < 5; i++)
             {
                 int k = i;
                 buttons[i] = Controls.Find($"button{i + 1}", true)[0] as Button;
-                buttons[i].Text = "button" + i.ToString();
                 ButtonHandler[k] = (sender, e) => SelectBoat(k);
+
+                string imageName = $"boat{k}H";
+                Bitmap img = Properties.Resources.ResourceManager.GetObject(imageName) as Bitmap;
+
                 buttons[i].Click += ButtonHandler[k];
+                buttons[i].Image = img;
             }
         }
 
@@ -120,7 +135,7 @@ namespace Potapanjebrodova
             for(int i = i1; i <= i2; i++)
             {
                 int k = i;
-                if (Program.igrac_matrix[k,j1] != "O")
+                if (Program.igrac_matrix[k,j1] != "")
                 {
                     return false;
                 }
@@ -129,7 +144,7 @@ namespace Potapanjebrodova
             for (int j = j1; j <= j2; j++)
             {
                 int k = j;
-                if (Program.igrac_matrix[i1, k] != "O")
+                if (Program.igrac_matrix[i1, k] != "")
                 {
                     return false;
                 }
@@ -140,7 +155,7 @@ namespace Potapanjebrodova
 
         private void PlaceBoat(int i1, int j1, int i2, int j2, int boat_index)
         {
-            int boat_size = boats[boat_index];
+            int boat_size = boats[boat_index] - 1;
 
             int[] smx = new int[] { -boat_size, boat_size, 0, 0 };
             int[] smy = new int[] { 0, 0, -boat_size, boat_size };
@@ -150,12 +165,15 @@ namespace Potapanjebrodova
                 int k = i;
                 if (CheckIfBoatCanBePlaced(i1, j1, i1 + smx[k], j1 + smy[k]))
                 {
+                    labels[(i1 + smx[k]) * 10 + j1 + smy[k]].Text = "";
                     labels[(i1 + smx[k]) * 10 + j1 + smy[k]].Click -= LabelHandler[(i1 + smx[k]) * 10 + j1 + smy[k]];
                 }
             }
 
             PoredajMinPaMax(ref i1, ref i2);
             PoredajMinPaMax(ref j1, ref j2);
+
+            ZapisiPozicijuBroda(boat_index, i1, j1, i2, j2);
 
             for (int i = i1; i <= i2; i++)
             {
@@ -168,6 +186,8 @@ namespace Potapanjebrodova
                 int k = j;
                 Program.igrac_matrix[i1, k] = boat_names[boat_index];
             }
+
+            AddImageToTableLayoutPanel(boat_index,i1,j1,i2,j2);
 
             ChangeLabelsToMatchMatix(Program.igrac_matrix);
             
@@ -188,6 +208,7 @@ namespace Potapanjebrodova
             if (!flag)
             {
                 PlayButton.Visible = true;
+                ChangeLabelsToMatchMatix(Program.igrac_matrix);
             }
         }
 
@@ -199,7 +220,7 @@ namespace Potapanjebrodova
                 {
                     int x = i, y = j;
 
-                    if (Program.igrac_matrix[x,y] == "O")
+                    if (Program.igrac_matrix[x,y] == "")
                     {
                         if (CheckIfBoatCanStartHere(x, y, boats[boat_index]))
                         {
@@ -249,6 +270,44 @@ namespace Potapanjebrodova
             }
         }
 
+        private void AddImageToTableLayoutPanel(int picture_index, int x1, int y1, int x2, int y2)
+        {
+            PoredajMinPaMax(ref x1, ref x2);
+            PoredajMinPaMax(ref y1, ref y2);
+
+            string smjer = "V";
+            PictureBox picture = new PictureBox();
+
+            picture.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            for(int i = x1; i <= x2; i++)
+            {
+                int k = i;
+                tableLayoutPanel1.Controls.Remove(labels[k * 10 + y1]);
+            }
+
+            if (x1 == x2)
+            {
+                for (int j = y1 + 1; j <= y2; j++)
+                {
+                    int k = j;
+                    tableLayoutPanel1.Controls.Remove(labels[x1 * 10 + k]);
+                }
+
+                smjer = "H";
+            }
+
+            string imageName = $"boat{picture_index}" + smjer;
+            Bitmap img = Properties.Resources.ResourceManager.GetObject(imageName) as Bitmap;
+            picture.Image = img;
+            picture.Dock = DockStyle.Fill;
+            picture.BackColor = Color.Transparent;
+
+            tableLayoutPanel1.SetRowSpan(picture, x2 - x1 + 1);
+            tableLayoutPanel1.SetColumnSpan(picture, y2 - y1 + 1);
+
+            tableLayoutPanel1.Controls.Add(picture, y1, x1);
+        }
         private void buttonOpenForm2_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -262,17 +321,27 @@ namespace Potapanjebrodova
             Application.Run(new Form2());
         }
 
+        private void label60_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PlayButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
 
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void label59_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void label101_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
 
         }
