@@ -1,3 +1,4 @@
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Threading;
@@ -97,6 +98,118 @@ namespace Potapanjebrodova
 
 			ret = Tuple.Create(arr[index] / 10, arr[index] % 10);
 		}
+
+		return ret;
+	}
+
+	int power(int k)
+	{
+		int ret = 1;
+		for(int i = 0; i < k; i++)
+		{
+			ret *= 10;
+		}
+		return ret;
+	}
+
+    Tuple<int, int> nextMoveHard(int[,] matrix, int[] shipsRemained)
+	{
+		int probMatrix[,] = new int[10][10];
+		bool boatHit = false;
+
+		for(int i = 0; i < 10; i++)
+		{
+			for(int j = 0; j < 10; j++)
+			{
+				if (matrix[i][j] == State.HIT) boatHit = true;
+			}
+		}
+
+		for (int i = 0; i < shipsRemained.Length; i++)
+		{
+			for(int j = 0; j < 10; j++)
+			{
+				for (int k = 0; k < 10; k++)
+				{
+					//vodoravno
+					int wrong = 0;
+					int hit = 0;
+					for(int l = 0; l < shipsRemained[i]; l++)
+					{
+						if (k + l > 9 || matrix[j][k + l] == State.MISSED || matrix[j][k + l] == State.SINKED)
+						{
+							wrong = 1;
+							break;
+						}
+						if (matrix[j][k + l] == State.HIT) hit++;
+					}
+					if (!wrong)
+					{
+						for(int l = 0; l < shipsRemained[i]; l++)
+						{
+							if (matrix[j][k + l] == State.AVAILABLE) probMatrix[j][k + l] += power(hit);
+						}
+					}
+					//okomito
+					wrong = 0;
+					hit = 0;
+                    for (int l = 0; l < shipsRemained[i]; l++)
+                    {
+                        if (j + l > 9 || matrix[j + l][k] == State.MISSED || matrix[j + l][k] == State.SINKED)
+                        {
+                            wrong = 1;
+                            break;
+                        }
+                        if (matrix[j + l][k] == State.HIT) hit++;
+                    }
+                    if (!wrong)
+                    {
+                        for (int l = 0; l < shipsRemained[i]; l++)
+                        {
+                            if (matrix[j + l][k] == State.AVAILABLE) probMatrix[j + l][k] += power(hit);
+                        }
+                    }
+                }
+			}
+		}
+        Tuple<int, int> ret = Tuple.Create(-1, -1);
+
+        if (boatHit)
+		{
+			int mx = 0;
+			int ind = -1;
+			for(int i = 0; i < 10; i++)
+			{
+				for(int j = 0; j < 10; j++)
+				{
+					if (probMatrix[i][j] > mx)
+					{
+						mx = probMatrix[i][j];
+						ind = i * 10 + j;
+					}
+				}
+			}
+
+			ret = Tuple.Create(ind / 10, ind % 10);
+        }
+		else
+		{
+            int mx = 0;
+            int ind = -1;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    if (probMatrix[i][j] > mx && (i + j) % 2 == 0)
+                    {
+                        mx = probMatrix[i][j];
+                        ind = i * 10 + j;
+                    }
+                }
+            }
+
+            ret = Tuple.Create(ind / 10, ind % 10);
+        }
 
 		return ret;
 	}
