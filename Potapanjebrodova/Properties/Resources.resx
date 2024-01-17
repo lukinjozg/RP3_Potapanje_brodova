@@ -121,26 +121,29 @@
   <data name="boat1V" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boat1V.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="boat0V" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\boat0V.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="boat3H" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\boat3H.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="boat3V" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boat3V.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="boat2V" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\boat2V.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="explosion" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\explosion1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="boat0H" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\boat0H.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="more" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\more.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="boat4H" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\boat4H.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="boat2H" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boat2H.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="boat0H" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\boat0H.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="boat0V" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\boat0V.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="boat4H" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\boat4H.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="boat4V" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boat4V.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,10 +151,10 @@
   <data name="boat1H" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boat1H.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="boat3H" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\boat3H.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="boat2V" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\boat2V.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="explosion" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\explosion1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="pocetniBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pocetniBackground.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

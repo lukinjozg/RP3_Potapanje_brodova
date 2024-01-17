@@ -9,3 +9,15 @@ C:\Users\User\Desktop\Lukine stvari\Zadaće\rp3\RP3_Potapanje_brodova\Potapanjeb
 C:\Users\User\Desktop\Lukine stvari\Zadaće\rp3\RP3_Potapanje_brodova\Potapanjebrodova\obj\Debug\Potapanjebrodova.exe
 C:\Users\User\Desktop\Lukine stvari\Zadaće\rp3\RP3_Potapanje_brodova\Potapanjebrodova\obj\Debug\Potapanjebrodova.pdb
 C:\Users\User\Desktop\Lukine stvari\Zadaće\rp3\RP3_Potapanje_brodova\Potapanjebrodova\obj\Debug\Potapanjebrodova.Form2.resources
+C:\Users\ProPC\rp3\RP3_Potapanje_brodova\Potapanjebrodova\bin\Debug\Potapanjebrodova.exe.config
+C:\Users\ProPC\rp3\RP3_Potapanje_brodova\Potapanjebrodova\bin\Debug\Potapanjebrodova.exe
+C:\Users\ProPC\rp3\RP3_Potapanje_brodova\Potapanjebrodova\bin\Debug\Potapanjebrodova.pdb
+C:\Users\ProPC\rp3\RP3_Potapanje_brodova\Potapanjebrodova\obj\Debug\Potapanjebrodova.csproj.AssemblyReference.cache
+C:\Users\ProPC\rp3\RP3_Potapanje_brodova\Potapanjebrodova\obj\Debug\Potapanjebrodova.Form1.resources
+C:\Users\ProPC\rp3\RP3_Potapanje_brodova\Potapanjebrodova\obj\Debug\Potapanjebrodova.Form2.resources
+C:\Users\ProPC\rp3\RP3_Potapanje_brodova\Potapanjebrodova\obj\Debug\Potapanjebrodova.pocetniScreen.resources
+C:\Users\ProPC\rp3\RP3_Potapanje_brodova\Potapanjebrodova\obj\Debug\Potapanjebrodova.Properties.Resources.resources
+C:\Users\ProPC\rp3\RP3_Potapanje_brodova\Potapanjebrodova\obj\Debug\Potapanjebrodova.csproj.GenerateResource.cache
+C:\Users\ProPC\rp3\RP3_Potapanje_brodova\Potapanjebrodova\obj\Debug\Potapanjebrodova.csproj.CoreCompileInputs.cache
+C:\Users\ProPC\rp3\RP3_Potapanje_brodova\Potapanjebrodova\obj\Debug\Potapanjebrodova.exe
+C:\Users\ProPC\rp3\RP3_Potapanje_brodova\Potapanjebrodova\obj\Debug\Potapanjebrodova.pdb
