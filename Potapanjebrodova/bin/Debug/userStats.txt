@@ -1,0 +1,8 @@
+Odigrano igara: 0
+Postotak Pobjede: 0
+Pobjede: 0
+Porazi: 0
+Potopljeno Protivnika: 0
+Potonulo Brodova: 0
+Postotak Pogodaka: 0
+Pogoci: 0
