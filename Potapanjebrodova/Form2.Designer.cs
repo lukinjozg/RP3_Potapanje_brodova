@@ -1179,10 +1179,11 @@
             // 
             // panel1
             // 
-            this.panel1.BackgroundImage = global::Potapanjebrodova.Properties.Resources.more;
-            this.panel1.Location = new System.Drawing.Point(489, 136);
+            this.panel1.BackgroundImage = global::Potapanjebrodova.Properties.Resources.moregrid;
+            this.panel1.Location = new System.Drawing.Point(481, 136);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(310, 310);
+            this.panel1.Size = new System.Drawing.Size(319, 309);
             this.panel1.TabIndex = 3;
             // 
             // Form2

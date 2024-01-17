@@ -40,7 +40,12 @@ namespace Potapanjebrodova
                 }
 
                 labels[k].TextAlign = ContentAlignment.MiddleCenter;
-            }  
+            }
+
+            Bitmap img = Properties.Resources.ResourceManager.GetObject("moregrid") as Bitmap;
+
+            panel1.BackgroundImage = img;
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
         private void MakeAllLabelsClickable()
@@ -88,7 +93,7 @@ namespace Potapanjebrodova
                 AddBoatImageToPanel($"boat{k}",Program.boat_pos[k, 0], Program.boat_pos[k, 1], Program.boat_pos[k, 2], Program.boat_pos[k, 3]);
             }
 
-            AddExplosionImage(0, 0);
+            AddExplosionImage(0, 0, false);
         }
 
         async Task OpponentMakesMove(string s)
@@ -143,7 +148,13 @@ namespace Potapanjebrodova
             int lx = y2 - y1;
             string smjer = "V";
             PictureBox picture = new PictureBox();
-            
+
+            int add = 0;
+
+            if (picture_name[4] == '3')
+            {
+                add = 3;
+            }
 
             if (x1 == x2)
             {
@@ -153,28 +164,38 @@ namespace Potapanjebrodova
             string imageName = picture_name + smjer;
             
             Bitmap img = Properties.Resources.ResourceManager.GetObject(imageName) as Bitmap;
-            
+
             picture.Image = img;
+            picture.Size = new Size(32 * (lx + 1), 31 * (ly + 1));
             picture.BackColor = Color.Transparent;
-            picture.Size = new Size(31 * (lx + 1), 31 * (ly + 1));
-            picture.BackColor = Color.Transparent;
-            picture.Location = new Point(31*y1, 31*x1);
-            //picture.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            picture.Location = new Point(32*y1 - add, 31*x1);
+            picture.SizeMode = PictureBoxSizeMode.StretchImage;
 
             panel1.Controls.Add(picture);
         }
 
-        private void AddExplosionImage(int x, int y)
+        private void AddExplosionImage(int x, int y, bool hit)
         {
             PictureBox picture = new PictureBox();
             Bitmap img = Properties.Resources.ResourceManager.GetObject("explosion") as Bitmap;
             
             picture.Image = img;
+       
             
-            picture.Size = new Size(31, 31);
-            picture.Location = new Point(31*x, 31*y);
+            picture.Size = new Size(32, 31);
+            picture.Location = new Point(32*x, 31*y);
             picture.SizeMode = PictureBoxSizeMode.StretchImage;
-            picture.BackColor = Color.Transparent;
+            if (hit)
+            {
+                picture.BackColor = Color.FromArgb(128, Color.Red);
+            }
+
+            else
+            {
+                picture.BackColor = Color.FromArgb(128, Color.Green);
+            }
+            
 
             panel1.Controls.Add(picture);
             panel1.Controls.SetChildIndex(picture, 0);
