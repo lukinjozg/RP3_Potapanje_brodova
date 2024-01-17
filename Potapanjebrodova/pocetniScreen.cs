@@ -27,7 +27,7 @@ namespace Potapanjebrodova
              * Postotak Pogodaka
              */
             string[] lines = File.ReadAllLines("userStats.txt");
-            string currUserStats = string.Join("\r\n\r\n", lines);
+            string currUserStats = "\r\n" + string.Join("\r\n\r\n", lines);
             userStats.Text = currUserStats;
         }
     }
