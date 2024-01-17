@@ -46,6 +46,16 @@ namespace Potapanjebrodova
 
             panel1.BackgroundImage = img;
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+
+            img = Properties.Resources.ResourceManager.GetObject("radar") as Bitmap;
+
+            tableLayoutPanel1.BackgroundImage = img;
+            tableLayoutPanel1.BackgroundImageLayout = ImageLayout.Stretch;
+
+            img = Properties.Resources.ResourceManager.GetObject("stormysea") as Bitmap;
+
+            this.BackgroundImage = img;
+            this.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
         private void MakeAllLabelsClickable()
