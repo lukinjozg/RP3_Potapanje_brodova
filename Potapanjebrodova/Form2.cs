@@ -25,7 +25,7 @@ namespace Potapanjebrodova
 
                 int k = i;
 
-                if(k < 100)
+                if (k < 100)
                 {
                     labels[k].Text = "";
                     labels[k].BackColor = Color.Transparent;
@@ -40,18 +40,23 @@ namespace Potapanjebrodova
                 }
 
                 labels[k].TextAlign = ContentAlignment.MiddleCenter;
-            }  
+            }
+
+            Bitmap img = Properties.Resources.ResourceManager.GetObject("moregrid") as Bitmap;
+
+            panel1.BackgroundImage = img;
+            panel1.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
         private void MakeAllLabelsClickable()
         {
-            for(int i = 0; i < 10; i++)
+            for (int i = 0; i < 10; i++)
             {
-                for(int j = 0; j < 10; j++)
+                for (int j = 0; j < 10; j++)
                 {
                     int x = i, y = j;
-                    LabelHandler[x*10 + y] = (sender, e) => MakeMove(x,y);
-                    labels[x * 10 + y].Click += LabelHandler[x*10 + y];
+                    LabelHandler[x * 10 + y] = (sender, e) => MakeMove(x, y);
+                    labels[x * 10 + y].Click += LabelHandler[x * 10 + y];
                 }
             }
         }
@@ -74,21 +79,21 @@ namespace Potapanjebrodova
             {
                 for (int j = 0; j < 10; j++)
                 {
-                    protivnik_matrix[i, j] = Program.igrac_matrix[i,j];
+                    protivnik_matrix[i, j] = Program.igrac_matrix[i, j];
                 }
             }
         }
 
         private void RightMatrixFill()
         {
-            for(int i = 0; i < 5; i++)
+            for (int i = 0; i < 5; i++)
             {
                 int k = i;
 
-                AddBoatImageToPanel($"boat{k}",Program.boat_pos[k, 0], Program.boat_pos[k, 1], Program.boat_pos[k, 2], Program.boat_pos[k, 3]);
+                AddBoatImageToPanel($"boat{k}", Program.boat_pos[k, 0], Program.boat_pos[k, 1], Program.boat_pos[k, 2], Program.boat_pos[k, 3]);
             }
 
-            AddExplosionImage(0, 0);
+            AddExplosionImage(0, 0, false);
         }
 
         async Task OpponentMakesMove(string s)
@@ -113,11 +118,11 @@ namespace Potapanjebrodova
 
         private void MakeMove(int x, int y)
         {
-            if(protivnik_matrix[x,y] != "")
+            if (protivnik_matrix[x, y] != "")
             {
-                ZapisiPogodak(x,y);
+                ZapisiPogodak(x, y);
             }
-            
+
             else
             {
                 ZapisiPromasaj(x, y);
@@ -137,13 +142,19 @@ namespace Potapanjebrodova
             MakeAllLabelsClickable();
         }
 
-        private void AddBoatImageToPanel(string picture_name,int x1, int y1, int x2, int y2)
+        private void AddBoatImageToPanel(string picture_name, int x1, int y1, int x2, int y2)
         {
             int ly = x2 - x1;
             int lx = y2 - y1;
             string smjer = "V";
             PictureBox picture = new PictureBox();
-            
+
+            int add = 0;
+
+            if (picture_name[4] == '3')
+            {
+                add = 3;
+            }
 
             if (x1 == x2)
             {
@@ -151,30 +162,40 @@ namespace Potapanjebrodova
             }
 
             string imageName = picture_name + smjer;
-            
+
             Bitmap img = Properties.Resources.ResourceManager.GetObject(imageName) as Bitmap;
-            
+
             picture.Image = img;
-            picture.BackColor = Color.Transparent;
             picture.Size = new Size(31 * (lx + 1), 31 * (ly + 1));
             picture.BackColor = Color.Transparent;
-            picture.Location = new Point(31*y1, 31*x1);
-            //picture.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            picture.Location = new Point(31 * y1 - add, 31 * x1);
+            picture.SizeMode = PictureBoxSizeMode.StretchImage;
 
             panel1.Controls.Add(picture);
         }
 
-        private void AddExplosionImage(int x, int y)
+        private void AddExplosionImage(int x, int y, bool hit)
         {
             PictureBox picture = new PictureBox();
             Bitmap img = Properties.Resources.ResourceManager.GetObject("explosion") as Bitmap;
-            
+
             picture.Image = img;
-            
+
+
             picture.Size = new Size(31, 31);
-            picture.Location = new Point(31*x, 31*y);
+            picture.Location = new Point(31 * x, 31 * y);
             picture.SizeMode = PictureBoxSizeMode.StretchImage;
-            picture.BackColor = Color.Transparent;
+            if (hit)
+            {
+                picture.BackColor = Color.FromArgb(128, Color.Red);
+            }
+
+            else
+            {
+                picture.BackColor = Color.FromArgb(128, Color.Green);
+            }
+
 
             panel1.Controls.Add(picture);
             panel1.Controls.SetChildIndex(picture, 0);

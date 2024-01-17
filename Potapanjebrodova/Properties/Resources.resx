@@ -118,11 +118,17 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="moregrid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\moregrid.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="boat0H" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boat0H.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="boat2H" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boat2H.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="more1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\more1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="boat2V" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boat2V.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -132,6 +138,9 @@
   </data>
   <data name="boat1V" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boat1V.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rp3_naslov" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rp3_naslov.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="boat3H" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boat3H.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,7 +166,7 @@
   <data name="boat4H" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boat4H.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="rp3_naslov" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\rp3_naslov.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="radar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\radar.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

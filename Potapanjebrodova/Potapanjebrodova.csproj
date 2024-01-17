@@ -112,6 +112,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\explosion.png" />
+    <None Include="Resources\radar.PNG" />
+    <None Include="Resources\moregrid.PNG" />
+    <None Include="Resources\more1.png" />
     <None Include="Resources\rp3_naslov.png" />
     <None Include="Resources\pocetniBackground.jpg" />
     <None Include="Resources\explosion1.png" />

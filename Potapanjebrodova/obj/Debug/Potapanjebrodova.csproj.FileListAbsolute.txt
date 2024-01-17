@@ -21,3 +21,4 @@ C:\Users\ProPC\rp3\RP3_Potapanje_brodova\Potapanjebrodova\obj\Debug\Potapanjebro
 C:\Users\ProPC\rp3\RP3_Potapanje_brodova\Potapanjebrodova\obj\Debug\Potapanjebrodova.csproj.CoreCompileInputs.cache
 C:\Users\ProPC\rp3\RP3_Potapanje_brodova\Potapanjebrodova\obj\Debug\Potapanjebrodova.exe
 C:\Users\ProPC\rp3\RP3_Potapanje_brodova\Potapanjebrodova\obj\Debug\Potapanjebrodova.pdb
+C:\Users\User\Desktop\Lukine stvari\Zadaće\rp3\RP3_Potapanje_brodova\Potapanjebrodova\obj\Debug\Potapanjebrodova.pocetniScreen.resources
