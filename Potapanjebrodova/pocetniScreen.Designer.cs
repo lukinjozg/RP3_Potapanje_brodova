@@ -37,6 +37,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.playLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // easyAI
@@ -45,7 +46,7 @@
             this.easyAI.BackgroundImage = global::Potapanjebrodova.Properties.Resources.easyDifficulty;
             this.easyAI.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.easyAI.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.easyAI.Location = new System.Drawing.Point(120, 60);
+            this.easyAI.Location = new System.Drawing.Point(120, 81);
             this.easyAI.Name = "easyAI";
             this.easyAI.Size = new System.Drawing.Size(90, 90);
             this.easyAI.TabIndex = 2;
@@ -58,7 +59,7 @@
             this.button1.BackgroundImage = global::Potapanjebrodova.Properties.Resources.mediumDifficulty;
             this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(120, 180);
+            this.button1.Location = new System.Drawing.Point(120, 201);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(90, 90);
             this.button1.TabIndex = 3;
@@ -70,7 +71,7 @@
             this.button2.BackgroundImage = global::Potapanjebrodova.Properties.Resources.hardDiffculty;
             this.button2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.button2.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(120, 300);
+            this.button2.Location = new System.Drawing.Point(120, 321);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(90, 90);
             this.button2.TabIndex = 4;
@@ -96,7 +97,8 @@
             this.statistikeLabel.BackColor = System.Drawing.Color.IndianRed;
             this.statistikeLabel.Font = new System.Drawing.Font("Times New Roman", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.statistikeLabel.ForeColor = System.Drawing.Color.Black;
-            this.statistikeLabel.Location = new System.Drawing.Point(556, 36);
+            this.statistikeLabel.Image = global::Potapanjebrodova.Properties.Resources._2b__1_;
+            this.statistikeLabel.Location = new System.Drawing.Point(555, 43);
             this.statistikeLabel.Name = "statistikeLabel";
             this.statistikeLabel.Size = new System.Drawing.Size(220, 40);
             this.statistikeLabel.TabIndex = 6;
@@ -107,9 +109,10 @@
             // 
             this.userStats.BackColor = System.Drawing.Color.IndianRed;
             this.userStats.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userStats.Location = new System.Drawing.Point(556, 76);
+            this.userStats.Image = global::Potapanjebrodova.Properties.Resources._1b__3_;
+            this.userStats.Location = new System.Drawing.Point(555, 83);
             this.userStats.Name = "userStats";
-            this.userStats.Size = new System.Drawing.Size(220, 327);
+            this.userStats.Size = new System.Drawing.Size(220, 314);
             this.userStats.TabIndex = 7;
             this.userStats.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -118,7 +121,7 @@
             this.label2.BackColor = System.Drawing.Color.Transparent;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(94, 301);
+            this.label2.Location = new System.Drawing.Point(94, 322);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(20, 89);
             this.label2.TabIndex = 8;
@@ -130,7 +133,7 @@
             this.label3.BackColor = System.Drawing.Color.Transparent;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(94, 62);
+            this.label3.Location = new System.Drawing.Point(94, 83);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(20, 89);
             this.label3.TabIndex = 9;
@@ -142,12 +145,23 @@
             this.label4.BackColor = System.Drawing.Color.Transparent;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(98, 181);
+            this.label4.Location = new System.Drawing.Point(98, 202);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(16, 89);
             this.label4.TabIndex = 10;
             this.label4.Text = "MEDIUM";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // playLabel
+            // 
+            this.playLabel.BackColor = System.Drawing.Color.Transparent;
+            this.playLabel.Font = new System.Drawing.Font("Times New Roman", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.playLabel.ForeColor = System.Drawing.Color.White;
+            this.playLabel.Location = new System.Drawing.Point(62, 26);
+            this.playLabel.Name = "playLabel";
+            this.playLabel.Size = new System.Drawing.Size(211, 52);
+            this.playLabel.TabIndex = 11;
+            this.playLabel.Text = "Započni igru";
             // 
             // pocetniScreen
             // 
@@ -156,6 +170,7 @@
             this.BackgroundImage = global::Potapanjebrodova.Properties.Resources.pocetniBackground;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.playLabel);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -182,5 +197,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label playLabel;
     }
 }

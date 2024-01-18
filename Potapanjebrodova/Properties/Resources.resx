@@ -133,11 +133,14 @@
   <data name="boat2V" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boat2V.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="stormysea" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stormysea1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="boat4V" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boat4V.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="pocetniBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\pocetniBackground.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="boat1H" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\boat1H.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="radar" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\radar.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,14 +151,11 @@
   <data name="boat3H" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boat3H.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="hardDiffculty" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\hardDiffculty.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="explosion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\explosion1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="boat1H" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\boat1H.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="boat3V" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\boat3V.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="boat0V" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boat0V.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -163,14 +163,20 @@
   <data name="more" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\more.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="easyDifficulty" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\easyDifficulty.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="hardDiffculty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hardDiffculty.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="mediumDifficulty" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\mediumDifficulty.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="boat3V" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\boat3V.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="2b (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\2b (1).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="easyDifficulty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\easyDifficulty.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pocetniBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pocetniBackground.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="boat4H" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boat4H.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -178,7 +184,7 @@
   <data name="boat1V" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boat1V.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="stormysea" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\stormysea1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="1b (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1b (3).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
