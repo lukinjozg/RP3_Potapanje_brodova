@@ -15,14 +15,14 @@ namespace Potapanjebrodova
     public partial class Form1 : Form
     {
         private Thread th;
-        private Label[] labels = new Label[100];
-        private Button[] buttons = new Button[5];
-        private EventHandler[] ButtonHandler = new EventHandler[5];
-        private EventHandler[] LabelHandler = new EventHandler[100];
+        private readonly Label[] labels = new Label[100];
+        private readonly Button[] buttons = new Button[5];
+        private readonly EventHandler[] ButtonHandler = new EventHandler[5];
+        private readonly EventHandler[] LabelHandler = new EventHandler[100];
 
         private bool[] existing_buttons = new bool[] { true, true, true, true, true };
-        private int[] boats = new int[] { 2, 3, 3, 4, 5 };
-        private string[] boat_names = new string[] { "A", "B", "C", "D", "E" };
+        private readonly int[] boats = new int[] { 2, 3, 3, 4, 5 };
+        private readonly string[] boat_names = new string[] { "A", "B", "C", "D", "E" };
         private void InitializeMatrix()
         {
             for (int i = 0; i < 10; i++)
@@ -44,24 +44,27 @@ namespace Potapanjebrodova
 
         private void InitializeLablesAndButtons()
         {
-            PlayButton.Click += buttonOpenForm2_Click;
-            //PlayButton.Visible = false;
+            PlayButton.Click += ButtonOpenForm2_Click;
+            PlayButton.Visible = false;
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 10; j++)
                 {
                     int x = i, y = j;
-                    Label label = new Label();
-
-                    label.BackColor = Color.Transparent;
-                    label.Size = new Size(44, 44);
-                    label.Location = new Point(44 * y, 44 * x);
+                    Label label = new Label
+                    {
+                        BackColor = Color.Transparent,
+                        Size = new Size(44, 44),
+                        Location = new Point(44 * y, 44 * x)
+                    };
 
                     panel1.Controls.Add(label);
 
                     labels[10 * x + y] = label;
                 }
             }
+
+            Bitmap img;
 
             for (int i = 0; i < 5; i++)
             {
@@ -70,11 +73,16 @@ namespace Potapanjebrodova
                 ButtonHandler[k] = (sender, e) => SelectBoat(k);
 
                 string imageName = $"boat{k}H";
-                Bitmap img = Properties.Resources.ResourceManager.GetObject(imageName) as Bitmap;
+                img = Properties.Resources.ResourceManager.GetObject(imageName) as Bitmap;
 
                 buttons[i].Click += ButtonHandler[k];
                 buttons[i].Image = img;
             }
+
+            img = Properties.Resources.ResourceManager.GetObject("stormysea") as Bitmap;
+
+            this.BackgroundImage = img;
+            this.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
         private void ChangeLabelsToMatchMatix(string[,] matrix)
@@ -106,9 +114,7 @@ namespace Potapanjebrodova
         {
             if (i1 > i2)
             {
-                int c = i1;
-                i1 = i2;
-                i2 = c;
+                (i2, i1) = (i1, i2);
             }
         }
 
@@ -304,7 +310,7 @@ namespace Potapanjebrodova
             panel1.Controls.Add(picture);
             panel1.Controls.SetChildIndex(picture, 0);
         }
-        private void buttonOpenForm2_Click(object sender, EventArgs e)
+        private void ButtonOpenForm2_Click(object sender, EventArgs e)
         {
             this.Close();
             th = new Thread(OpenForm);
@@ -315,31 +321,6 @@ namespace Potapanjebrodova
         private void OpenForm()
         {
             Application.Run(new Form2());
-        }
-
-        private void label60_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PlayButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label59_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
