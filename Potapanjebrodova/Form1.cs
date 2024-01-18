@@ -64,6 +64,17 @@ namespace Potapanjebrodova
                 }
             }
 
+            string input = Environment.CurrentDirectory;
+            string toRemove = "\\bin\\Debug";
+            string filepath = input.Replace(toRemove, "") + "\\text.txt";
+
+            using (StreamWriter writer = new StreamWriter(filepath))
+            {
+                writer.WriteLine(6);
+                writer.WriteLine(7);
+                writer.WriteLine(8);
+            }
+
             Bitmap img;
 
             for (int i = 0; i < 5; i++)
@@ -250,6 +261,7 @@ namespace Potapanjebrodova
                 buttons[k].Click -= ButtonHandler[k];
             }
         }
+
 
         private void WhereToPlaceBoat(int x, int y, int boat_index)
         {

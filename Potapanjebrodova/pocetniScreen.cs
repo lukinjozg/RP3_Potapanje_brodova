@@ -30,5 +30,16 @@ namespace Potapanjebrodova
             string currUserStats = "\r\n" + string.Join("\r\n\r\n", lines);
             userStats.Text = currUserStats;
         }
+
+        private void easyAI_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

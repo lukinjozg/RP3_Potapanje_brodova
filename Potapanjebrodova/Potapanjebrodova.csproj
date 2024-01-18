@@ -112,6 +112,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Resources\explosion.png" />
+    <Content Include="Resources\stormysea.jpg" />
+    <Content Include="text.txt" />
+    <None Include="Resources\stormysea1.jpg" />
     <None Include="Resources\radar.PNG" />
     <None Include="Resources\moregrid.PNG" />
     <None Include="Resources\more1.png" />
