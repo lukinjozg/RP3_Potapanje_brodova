@@ -18,6 +18,7 @@ namespace Potapanjebrodova
         private PictureBox[] pics = new PictureBox[10];
         private string[,] protivnik_matrix = new string[10, 10];
         private EventHandler[] LabelHandler = new EventHandler[100];
+        private AI ai = new AI();
         private void InitializeLables()
         {
             for (int i = 0; i < 100; i++)
@@ -91,14 +92,16 @@ namespace Potapanjebrodova
             }
         }
         //tu valjda postavimo brodove od protivnika
-        private void InitializeMatrix()
+        private void InitializeMatrix(int lvl)
         {
-            for (int i = 0; i < 10; i++)
+            int[,] shipPositions = new int[10, 10];
+            if (lvl > 0)
             {
-                for (int j = 0; j < 10; j++)
-                {
-                    protivnik_matrix[i, j] = Program.igrac_matrix[i, j];
-                }
+                ai.setBattleshipsMediumHard(ref shipPositions);
+            }
+            else
+            {
+                ai.setBattleshipsEasy(ref shipPositions);
             }
         }
 
@@ -108,10 +111,10 @@ namespace Potapanjebrodova
             {
                 int k = i;
 
-                AddBoatImageToPanel(panel1,$"boat{k}", Program.boat_pos[k, 0], Program.boat_pos[k, 1], Program.boat_pos[k, 2], Program.boat_pos[k, 3]);
+                Boats.AddBoatImageToPanel(panel1,$"boat{k}", Program.boat_pos[k, 0], Program.boat_pos[k, 1], Program.boat_pos[k, 2], Program.boat_pos[k, 3]);
             }
 
-            AddExplosionImage(0, 0, false);
+            Boats.AddExplosionImage(panel1,0, 0, false);
         }
 
         async Task OpponentMakesMove(string s)
@@ -158,67 +161,9 @@ namespace Potapanjebrodova
         {
             InitializeComponent();
             InitializeLables();
-            InitializeMatrix();
+            InitializeMatrix(0);
             RightMatrixFill();
             MakeAllLabelsClickable();
-        }
-
-        private void AddBoatImageToPanel(Panel panel, string picture_name, int x1, int y1, int x2, int y2)
-        {
-            int ly = x2 - x1;
-            int lx = y2 - y1;
-
-            int w = panel.Width / 10;
-            int h = panel.Height / 10;
-
-            string smjer = "V";
-            PictureBox picture = new PictureBox();
-
-            int add = 0;
-
-            if (x1 == x2)
-            {
-                smjer = "H";
-            }
-
-            string imageName = picture_name + smjer;
-
-            Bitmap img = Properties.Resources.ResourceManager.GetObject(imageName) as Bitmap;
-
-            picture.Image = img;
-            picture.Size = new Size(w * (lx + 1), h * (ly + 1));
-            picture.BackColor = Color.Transparent;
-
-            picture.Location = new Point(w * y1 - add, h * x1);
-            picture.SizeMode = PictureBoxSizeMode.StretchImage;
-
-            panel.Controls.Add(picture);
-        }
-
-        private void AddExplosionImage(int x, int y, bool hit)
-        {
-            PictureBox picture = new PictureBox();
-            Bitmap img = Properties.Resources.ResourceManager.GetObject("explosion") as Bitmap;
-
-            picture.Image = img;
-
-
-            picture.Size = new Size(31, 31);
-            picture.Location = new Point(31 * x, 31 * y);
-            picture.SizeMode = PictureBoxSizeMode.StretchImage;
-            if (hit)
-            {
-                picture.BackColor = Color.FromArgb(128, Color.Red);
-            }
-
-            else
-            {
-                picture.BackColor = Color.FromArgb(128, Color.Green);
-            }
-
-
-            panel1.Controls.Add(picture);
-            panel1.Controls.SetChildIndex(picture, 0);
         }
     }
 }

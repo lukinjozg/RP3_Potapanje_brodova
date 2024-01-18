@@ -29,7 +29,7 @@ namespace Potapanjebrodova
             {
                 for (int j = 0; j < 10; j++)
                 {
-                    Program.igrac_matrix[i, j] = "";
+                    Boats.igrac_matrix[i, j] = "";
                 }
             }
         }
@@ -160,7 +160,7 @@ namespace Potapanjebrodova
             for (int i = i1; i <= i2; i++)
             {
                 int k = i;
-                if (Program.igrac_matrix[k, j1] != "")
+                if (Boats.igrac_matrix[k, j1] != "")
                 {
                     return false;
                 }
@@ -169,7 +169,7 @@ namespace Potapanjebrodova
             for (int j = j1; j <= j2; j++)
             {
                 int k = j;
-                if (Program.igrac_matrix[i1, k] != "")
+                if (Boats.igrac_matrix[i1, k] != "")
                 {
                     return false;
                 }
@@ -205,16 +205,16 @@ namespace Potapanjebrodova
             for (int i = i1; i <= i2; i++)
             {
                 int k = i;
-                Program.igrac_matrix[k, j1] = boat_names[boat_index];
+                Boats.igrac_matrix[k, j1] = boat_names[boat_index];
             }
 
             for (int j = j1; j <= j2; j++)
             {
                 int k = j;
-                Program.igrac_matrix[i1, k] = boat_names[boat_index];
+                Boats.igrac_matrix[i1, k] = boat_names[boat_index];
             }
 
-            AddBoatImageToPanel($"boat{boat_index}", i1, j1, i2, j2);
+            Boats.AddBoatImageToPanel(panel1,$"boat{boat_index}", i1, j1, i2, j2);
 
             bool flag = false;
             for (int i = 0; i < 5; i++)
@@ -244,7 +244,7 @@ namespace Potapanjebrodova
                 {
                     int x = i, y = j;
 
-                    if (Program.igrac_matrix[x, y] == "")
+                    if (Boats.igrac_matrix[x, y] == "")
                     {
                         if (CheckIfBoatCanStartHere(x, y, boats[boat_index]))
                         {
@@ -296,32 +296,6 @@ namespace Potapanjebrodova
             }
         }
 
-        private void AddBoatImageToPanel(string picture_name, int x1, int y1, int x2, int y2)
-        {
-            int ly = x2 - x1;
-            int lx = y2 - y1;
-            string smjer = "V";
-            PictureBox picture = new PictureBox();
-
-
-            if (x1 == x2)
-            {
-                smjer = "H";
-            }
-
-            string imageName = picture_name + smjer;
-
-            Bitmap img = Properties.Resources.ResourceManager.GetObject(imageName) as Bitmap;
-
-            picture.Image = img;
-            picture.Size = new Size(44 * (lx + 1), 44 * (ly + 1));
-            picture.BackColor = Color.Transparent;
-            picture.Location = new Point(44 * y1, 44 * x1);
-            picture.SizeMode = PictureBoxSizeMode.StretchImage;
-
-            panel1.Controls.Add(picture);
-            panel1.Controls.SetChildIndex(picture, 0);
-        }
         private void ButtonOpenForm2_Click(object sender, EventArgs e)
         {
             this.Close();
