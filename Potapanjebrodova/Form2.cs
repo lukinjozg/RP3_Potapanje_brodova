@@ -17,6 +17,7 @@ namespace Potapanjebrodova
         private Label[] labels = new Label[100];
         private string[,] protivnik_matrix = new string[10, 10];
         private EventHandler[] LabelHandler = new EventHandler[100];
+        private AI ai = new AI();
         private void InitializeLables()
         {
             for (int i = 0; i < 100; i++)
@@ -73,14 +74,16 @@ namespace Potapanjebrodova
             }
         }
         //tu valjda postavimo brodove od protivnika
-        private void InitializeMatrix()
+        private void InitializeMatrix(int level)
         {
-            for (int i = 0; i < 10; i++)
+            int[,] shipPositions = new int[10, 10];
+            if(level > 0)
             {
-                for (int j = 0; j < 10; j++)
-                {
-                    protivnik_matrix[i, j] = Program.igrac_matrix[i,j];
-                }
+                ai.setBattleshipsMediumHard(ref shipPositions);
+            }
+            else
+            {
+                ai.setBattleshipsEasy(ref shipPositions);
             }
         }
 
@@ -137,7 +140,7 @@ namespace Potapanjebrodova
         {
             InitializeComponent();
             InitializeLables();
-            InitializeMatrix();
+            InitializeMatrix(0);
             RightMatrixFill();
             MakeAllLabelsClickable();
         }
