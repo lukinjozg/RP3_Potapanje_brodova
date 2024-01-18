@@ -15,7 +15,8 @@ namespace Potapanjebrodova
     public partial class Form2 : Form
     {
         private Label[] labels = new Label[100];
-        private string[,] protivnik_matrix = new string[10, 10];
+        private int[,] protivnik_matrix = new int[10, 10];
+        private bool[,] kliknuto = new bool[10, 10];
         private EventHandler[] LabelHandler = new EventHandler[100];
         private AI ai = new AI();
         private void InitializeLables()
@@ -55,6 +56,8 @@ namespace Potapanjebrodova
             {
                 for(int j = 0; j < 10; j++)
                 {
+                    if (kliknuto[i, j]) continue;
+
                     int x = i, y = j;
                     LabelHandler[x*10 + y] = (sender, e) => MakeMove(x,y);
                     labels[x * 10 + y].Click += LabelHandler[x*10 + y];
@@ -68,6 +71,8 @@ namespace Potapanjebrodova
             {
                 for (int j = 0; j < 10; j++)
                 {
+                    if (kliknuto[i, j]) continue;
+
                     int x = i, y = j;
                     labels[x * 10 + y].Click -= LabelHandler[x * 10 + y];
                 }
@@ -76,14 +81,13 @@ namespace Potapanjebrodova
         //tu valjda postavimo brodove od protivnika
         private void InitializeMatrix(int level)
         {
-            int[,] shipPositions = new int[10, 10];
             if(level > 0)
             {
-                ai.setBattleshipsMediumHard(ref shipPositions);
+                ai.setBattleshipsMediumHard(ref protivnik_matrix);
             }
             else
             {
-                ai.setBattleshipsEasy(ref shipPositions);
+                ai.setBattleshipsEasy(ref protivnik_matrix);
             }
         }
 
@@ -102,8 +106,9 @@ namespace Potapanjebrodova
         async Task OpponentMakesMove(string s)
         {
             //tu ide ai
+            Tuple<int, int> tuple = ai.nextMoveEasy(Program.stanje);
 
-            await Task.Delay(5000);
+            await Task.Delay(500);
             MakeAllLabelsClickable();
         }
 
@@ -119,11 +124,35 @@ namespace Potapanjebrodova
             labels[10 * x + y].ForeColor = Color.White;
         }
 
+        private bool shipSinked(int vel)
+        {
+            int cnt = 0;
+            for(int i = 0; i < 10; i++)
+            {
+                for(int j = 0; j < 10; j++)
+                {
+                    if (kliknuto[i, j] && protivnik_matrix[i, j] == vel)
+                    {
+                        cnt++;
+                    }
+                }
+            }
+
+            return (cnt == vel);
+        }
+
         private void MakeMove(int x, int y)
         {
-            if(protivnik_matrix[x,y] != "")
+            kliknuto[x, y] = true;
+
+            if (protivnik_matrix[x,y] != 0)
             {
                 ZapisiPogodak(x,y);
+                if (shipSinked(protivnik_matrix[x, y]))
+                {
+                    //ispis na ekran ako je brod potopljen, u protivnik_matrix[x, y] je 
+                    //velicina broda
+                }
             }
             
             else

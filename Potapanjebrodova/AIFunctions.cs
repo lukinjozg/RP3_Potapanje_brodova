@@ -20,7 +20,7 @@ namespace Potapanjebrodova
 
         }
 
-        Tuple<int, int> nextMoveRandom(State[,] matrix)
+        public Tuple<int, int> nextMoveEasy(State[,] matrix)
         {
             Random random = new Random();
 
@@ -61,7 +61,7 @@ namespace Potapanjebrodova
             return sol;
         }
 
-        Tuple<int, int> nextMoveIntermediate(State[,] matrix)
+        public Tuple<int, int> nextMoveIntermediate(State[,] matrix)
         {
             Tuple<int, int> ret = Tuple.Create(-1, -1);
 
@@ -119,7 +119,7 @@ namespace Potapanjebrodova
             return ret;
         }
 
-        Tuple<int, int> nextMoveHard(State[,] matrix, int[] shipsRemained)
+        public Tuple<int, int> nextMoveHard(State[,] matrix, int[] shipsRemained)
         {
             int[,] probMatrix = new int[10, 10];
             bool boatHit = false;
@@ -230,7 +230,7 @@ namespace Potapanjebrodova
             for (int i = 5; i > 1; i--)
             {
                 bool found = false;
-                while (found)
+                while (!found)
                 {
                     int r1 = random.Next(100);
                     int r2 = random.Next(4);
