@@ -28,6 +28,7 @@ namespace Potapanjebrodova
              * Postotak Pogodaka
              */
             string[] lines = File.ReadAllLines("userStats.txt");
+            lines = lines.Take(lines.Length - 1).ToArray();
             string currUserStats = "\r\n" + string.Join("\r\n\r\n", lines);
             userStats.Text = currUserStats;
             
