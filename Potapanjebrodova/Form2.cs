@@ -119,7 +119,7 @@ namespace Potapanjebrodova
             {
                 int k = i;
 
-                Boats.AddBoatImageToPanel(panel1,$"boat{k}", Program.boat_pos[k, 0], Program.boat_pos[k, 1], Program.boat_pos[k, 2], Program.boat_pos[k, 3]);
+                Boats.AddBoatImageToPanel(panel1,$"boat{k}", Boats.boat_pos[k, 0], Boats.boat_pos[k, 1], Boats.boat_pos[k, 2], Boats.boat_pos[k, 3]);
             }
         }
 

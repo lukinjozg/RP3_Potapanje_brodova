@@ -11,6 +11,80 @@ namespace Potapanjebrodova
     public partial class Boats
     {
         public static string[,] igrac_matrix = new string[10, 10];
+        public static int[] boats = new int[] { 2, 3, 3, 4, 5 };
+        public static string[] boat_names = new string[] { "A", "B", "C", "D", "E" };
+        public static int[,] boat_pos = new int[5, 4];
+
+        public static void ZapisiPozicijuBroda(int boat_index, int x1, int y1, int x2, int y2)
+        {
+            boat_pos[boat_index, 0] = x1;
+            boat_pos[boat_index, 1] = y1;
+            boat_pos[boat_index, 2] = x2;
+            boat_pos[boat_index, 3] = y2;
+        }
+
+
+        public static bool InBoard(int i, int j)
+        {
+            return (i >= 0 && i < 10 && j >= 0 && j < 10);
+        }
+
+        public static void PoredajMinPaMax(ref int i1, ref int i2)
+        {
+            if (i1 > i2)
+            {
+                (i2, i1) = (i1, i2);
+            }
+        }
+
+        public static bool CheckIfBoatCanStartHere(int x, int y, int boat_size)
+        {
+            boat_size -= 1;
+
+            int[] smx = new int[] { -boat_size, boat_size, 0, 0 };
+            int[] smy = new int[] { 0, 0, -boat_size, boat_size };
+
+            for (int i = 0; i < 4; i++)
+            {
+                int k = i;
+                if (CheckIfBoatCanBePlaced(x, y, x + smx[k], y + smy[k]))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+        public static bool CheckIfBoatCanBePlaced(int i1, int j1, int i2, int j2)
+        {
+            PoredajMinPaMax(ref i1, ref i2);
+            PoredajMinPaMax(ref j1, ref j2);
+
+            if (!(InBoard(i1, j1) && InBoard(i2, j2)))
+            {
+                return false;
+            }
+
+            for (int i = i1; i <= i2; i++)
+            {
+                int k = i;
+                if (Boats.igrac_matrix[k, j1] != "")
+                {
+                    return false;
+                }
+            }
+
+            for (int j = j1; j <= j2; j++)
+            {
+                int k = j;
+                if (Boats.igrac_matrix[i1, k] != "")
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
 
         public static void AddBoatImageToPanel(Panel panel, string picture_name, int x1, int y1, int x2, int y2)
         {

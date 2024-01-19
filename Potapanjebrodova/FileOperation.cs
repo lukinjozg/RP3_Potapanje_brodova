@@ -9,7 +9,7 @@ namespace Potapanjebrodova
 {
     internal class FileOperation
     {
-        public static string filePath = Environment.CurrentDirectory + "\\userStats.txt";
+        public static string filePath = "userStats.txt";
         public static void UpdatePogodci(bool pogodak)
         {
             int hits, misses;
@@ -36,7 +36,7 @@ namespace Potapanjebrodova
             double percentage = (double)hits / (hits + misses);
             double roundedPercentage = (int)Math.Ceiling(percentage * 100);
 
-            UpdateLine(6, $"Postotak Pogodaka: {roundedPercentage}");
+            UpdateLine(6, $"Postotak Pogodaka: {roundedPercentage}%");
             UpdateLine(7, $"Pogoci: {hits}");
             UpdateLine(8, misses.ToString());
 
