@@ -126,7 +126,6 @@
     <None Include="Resources\rp3_naslov.png" />
     <None Include="Resources\pocetniBackground.jpg" />
     <None Include="Resources\explosion1.png" />
-    <Content Include="Resources\more.PNG" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

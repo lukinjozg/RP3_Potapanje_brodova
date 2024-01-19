@@ -172,6 +172,8 @@ namespace Potapanjebrodova
 
             int[] smx = new int[] { -boat_size, boat_size, 0, 0 };
             int[] smy = new int[] { 0, 0, -boat_size, boat_size };
+            
+            labels[10 * i1 + j1].BackColor = Color.Transparent;
 
             labels[10 * i1 + j1].BackColor = Color.Transparent;
 
@@ -284,6 +286,32 @@ namespace Potapanjebrodova
             }
         }
 
+        private void AddBoatImageToPanel(string picture_name, int x1, int y1, int x2, int y2)
+        {
+            int ly = x2 - x1;
+            int lx = y2 - y1;
+            string smjer = "V";
+            PictureBox picture = new PictureBox();
+
+
+            if (x1 == x2)
+            {
+                smjer = "H";
+            }
+
+            string imageName = picture_name + smjer;
+
+            Bitmap img = Properties.Resources.ResourceManager.GetObject(imageName) as Bitmap;
+
+            picture.Image = img;
+            picture.Size = new Size(45 * (lx + 1), 44 * (ly + 1));
+            picture.BackColor = Color.Transparent;
+            picture.Location = new Point(45 * y1, 44 * x1);
+            picture.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            panel1.Controls.Add(picture);
+            panel1.Controls.SetChildIndex(picture, 0);
+        }
         private void ButtonOpenForm2_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -295,6 +323,36 @@ namespace Potapanjebrodova
         private void OpenForm()
         {
             Application.Run(new Form2());
+        }
+
+        private void label60_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void PlayButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label59_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

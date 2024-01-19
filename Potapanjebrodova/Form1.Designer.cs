@@ -106,7 +106,7 @@
             this.button4.Image = global::Potapanjebrodova.Properties.Resources.boat3H;
             this.button4.Location = new System.Drawing.Point(548, 316);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(156, 42);
+            this.button4.Size = new System.Drawing.Size(157, 42);
             this.button4.TabIndex = 4;
             this.button4.UseVisualStyleBackColor = true;
             // 
@@ -124,7 +124,7 @@
             this.button2.Image = global::Potapanjebrodova.Properties.Resources.boat1H;
             this.button2.Location = new System.Drawing.Point(562, 177);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(124, 42);
+            this.button2.Size = new System.Drawing.Size(112, 42);
             this.button2.TabIndex = 2;
             this.button2.UseVisualStyleBackColor = true;
             // 
@@ -134,7 +134,7 @@
             this.button1.Image = global::Potapanjebrodova.Properties.Resources.boat0H;
             this.button1.Location = new System.Drawing.Point(580, 117);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 42);
+            this.button1.Size = new System.Drawing.Size(81, 42);
             this.button1.TabIndex = 1;
             this.button1.UseVisualStyleBackColor = true;
             // 
@@ -151,6 +151,7 @@
             this.label1.Size = new System.Drawing.Size(345, 33);
             this.label1.TabIndex = 11;
             this.label1.Text = "Postavi brodove za bitku!";
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -161,6 +162,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.PlayButton);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
