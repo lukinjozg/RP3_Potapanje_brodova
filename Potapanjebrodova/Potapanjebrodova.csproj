@@ -46,6 +46,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AIFunctions.cs" />
+    <Compile Include="Boats.cs" />
+    <Compile Include="FileOperation.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +61,12 @@
     <Compile Include="Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
+    <Compile Include="pocetniScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="pocetniScreen.Designer.cs">
+      <DependentUpon>pocetniScreen.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -65,6 +74,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form2.resx">
       <DependentUpon>Form2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="pocetniScreen.resx">
+      <DependentUpon>pocetniScreen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -102,10 +114,17 @@
     <None Include="Resources\boat0H.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\2b %281%29.jpg" />
+    <None Include="Resources\1b %283%29.jpg" />
     <Content Include="Resources\explosion.png" />
-    <Content Include="Resources\more.png" />
+    <Content Include="Resources\stormysea.jpg" />
+    <Content Include="text.txt" />
+    <None Include="Resources\stormysea1.jpg" />
+    <None Include="Resources\radar.PNG" />
     <None Include="Resources\moregrid.PNG" />
     <None Include="Resources\more1.png" />
+    <None Include="Resources\rp3_naslov.png" />
+    <None Include="Resources\pocetniBackground.jpg" />
     <None Include="Resources\explosion1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

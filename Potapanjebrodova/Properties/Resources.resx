@@ -118,6 +118,9 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="moregrid" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\moregrid.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="boat0H" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boat0H.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -130,11 +133,20 @@
   <data name="boat2V" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boat2V.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="stormysea" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stormysea1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="boat4V" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boat4V.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="boat1V" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boat1V.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="radar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\radar.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rp3_naslov" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rp3_naslov.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="boat3H" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boat3H.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -142,8 +154,8 @@
   <data name="explosion" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\explosion1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="boat1H" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\boat1H.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="boat3V" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\boat3V.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="boat0V" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boat0V.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,13 +163,28 @@
   <data name="more" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\more.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="boat3V" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\boat3V.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="hardDifficulty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\hardDiffculty.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mediumDifficulty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mediumDifficulty.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="2b (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\2b (1).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="easyDifficulty" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\easyDifficulty.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="pocetniBackground" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\pocetniBackground.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="boat4H" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\boat4H.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="moregrid" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\moregrid.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="boat1V" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\boat1V.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1b (3)" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1b (3).jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

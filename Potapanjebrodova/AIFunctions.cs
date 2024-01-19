@@ -1,10 +1,10 @@
-﻿using System;
+using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 
 namespace Potapanjebrodova
 {
-
     public enum State : int
     {
         AVAILABLE = 0,
@@ -330,5 +330,4 @@ namespace Potapanjebrodova
             }
         }
     }
-
 }
