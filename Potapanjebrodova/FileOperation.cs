@@ -27,7 +27,8 @@ namespace Potapanjebrodova
                 hits = int.Parse(parts[1]);
 
                 line = reader.ReadLine();
-                misses = int.Parse(line);
+                parts = line.Split(':');
+                misses = int.Parse(parts[1]);
 
                 if (pogodak) hits++;
                 else misses++;
@@ -38,7 +39,7 @@ namespace Potapanjebrodova
 
             UpdateLine(6, $"Postotak Pogodaka: {roundedPercentage}%");
             UpdateLine(7, $"Pogoci: {hits}");
-            UpdateLine(8, misses.ToString());
+            UpdateLine(8, $"Promasaji: {misses}");
 
         }
 

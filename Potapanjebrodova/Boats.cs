@@ -14,6 +14,7 @@ namespace Potapanjebrodova
         public static int[] boats = new int[] { 2, 3, 3, 4, 5 };
         public static string[] boat_names = new string[] { "A", "B", "C", "D", "E" };
         public static int[,] boat_pos = new int[5, 4];
+        public static bool[] sinked = new bool[5];
 
         public static void ZapisiPozicijuBroda(int boat_index, int x1, int y1, int x2, int y2)
         {
@@ -21,6 +22,44 @@ namespace Potapanjebrodova
             boat_pos[boat_index, 1] = y1;
             boat_pos[boat_index, 2] = x2;
             boat_pos[boat_index, 3] = y2;
+        }
+
+        private static int determineDirection(int x1, int x2)
+        {
+            if (x1 > x2) return -1;
+            else if (x1 == x2) return 0;
+            else return 1;
+        }
+
+        public static bool checkIfSinked(int boat_index)
+        {
+            int sx = determineDirection(boat_pos[boat_index, 0], boat_pos[boat_index, 2]);
+            int sy = determineDirection(boat_pos[boat_index, 1], boat_pos[boat_index, 3]);
+
+            int x = boat_pos[boat_index, 0];
+            int y = boat_pos[boat_index, 1];
+
+            bool ret = true;
+            for (int i = 0; i < boats[boat_index]; i++)
+            {
+                if (Program.stanje[x, y] != State.HIT) ret = false;
+                x += sx;
+                y += sy;
+            }
+
+            if (ret)
+            {
+                x = boat_pos[boat_index, 0];
+                y = boat_pos[boat_index, 1];
+                for (int i = 0; i < boats[boat_index]; i++)
+                {
+                    Program.stanje[x, y] = State.SINKED;
+                    x += sx;
+                    y += sy;
+                }
+            }
+
+            return ret;
         }
 
         public static bool InBoard(int i, int j)
@@ -67,7 +106,7 @@ namespace Potapanjebrodova
             for (int i = i1; i <= i2; i++)
             {
                 int k = i;
-                if (Boats.igrac_matrix[k, j1] != "")
+                if (igrac_matrix[k, j1] != "")
                 {
                     return false;
                 }
@@ -76,7 +115,7 @@ namespace Potapanjebrodova
             for (int j = j1; j <= j2; j++)
             {
                 int k = j;
-                if (Boats.igrac_matrix[i1, k] != "")
+                if (igrac_matrix[i1, k] != "")
                 {
                     return false;
                 }

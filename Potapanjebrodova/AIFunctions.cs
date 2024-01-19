@@ -119,7 +119,7 @@ namespace Potapanjebrodova
             return ret;
         }
 
-        public Tuple<int, int> nextMoveHard(State[,] matrix, int[] shipsRemained)
+        public Tuple<int, int> nextMoveHard(State[,] matrix, List<int> shipsRemained)
         {
             int[,] probMatrix = new int[10, 10];
             bool boatHit = false;
@@ -132,7 +132,7 @@ namespace Potapanjebrodova
                 }
             }
 
-            for (int i = 0; i < shipsRemained.Length; i++)
+            for (int i = 0; i < shipsRemained.Count; i++)
             {
                 for (int j = 0; j < 10; j++)
                 {
@@ -221,13 +221,13 @@ namespace Potapanjebrodova
             return ret;
         }
 
-        public void setBattleshipsEasy(ref int[,] matrix)
+        public void setBattleshipsEasy(ref int[,] matrix, int[] boats)
         {
             Random random = new Random();
             int[] sx = { 1, 0, -1, 0 };
             int[] sy = { 0, 1, 0, -1 };
 
-            for (int i = 5; i > 1; i--)
+            for (int i = 4; i >= 0; i--)
             {
                 bool found = false;
                 while (!found)
@@ -239,7 +239,7 @@ namespace Potapanjebrodova
 
                     bool good = true;
 
-                    for (int j = 0; j < i; j++)
+                    for (int j = 0; j < boats[i]; j++)
                     {
                         if (x < 0 || x > 9 || y < 0 || y > 9 || matrix[x, y] != 0)
                         {
@@ -254,9 +254,9 @@ namespace Potapanjebrodova
                     {
                         x = r1 / 10;
                         y = r1 % 10;
-                        for (int j = 0; j < i; j++)
+                        for (int j = 0; j < boats[i]; j++)
                         {
-                            matrix[x, y] = i;
+                            matrix[x, y] = i + 1;
                             x += sx[r2];
                             y += sy[r2];
                         }
@@ -284,13 +284,13 @@ namespace Potapanjebrodova
             return (sum > 0);
         }
 
-        public void setBattleshipsMediumHard(ref int[,] matrix)
+        public void setBattleshipsMediumHard(ref int[,] matrix, int[] boats)
         {
             Random random = new Random();
             int[] sx = { 1, 0, -1, 0 };
             int[] sy = { 0, 1, 0, -1 };
 
-            for (int i = 5; i > 1; i--)
+            for (int i = 4; i >= 0; i--)
             {
                 bool found = false;
                 while (!found)
@@ -302,7 +302,7 @@ namespace Potapanjebrodova
 
                     bool good = true;
 
-                    for (int j = 0; j < i; j++)
+                    for (int j = 0; j < boats[i]; j++)
                     {
                         if (x < 0 || x > 9 || y < 0 || y > 9 || matrix[x, y] != 0
                             || notAvailableField(matrix, x, y))
@@ -318,9 +318,9 @@ namespace Potapanjebrodova
                     {
                         x = r1 / 10;
                         y = r1 % 10;
-                        for (int j = 0; j < i; j++)
+                        for (int j = 0; j < boats[i]; j++)
                         {
-                            matrix[x, y] = i;
+                            matrix[x, y] = i + 1;
                             x += sx[r2];
                             y += sy[r2];
                         }

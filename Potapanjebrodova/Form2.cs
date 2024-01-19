@@ -21,6 +21,7 @@ namespace Potapanjebrodova
         private readonly AutoResetEvent _resetEvent = new AutoResetEvent(false);
         private int[,] protivnik_matrix = new int[10, 10];
         private bool[,] kliknuto = new bool[10, 10];
+        private bool[] potopljen = new bool[5];
         
         
         private AI ai = new AI();
@@ -103,11 +104,11 @@ namespace Potapanjebrodova
         {
             if (lvl > 0)
             {
-                ai.setBattleshipsMediumHard(ref protivnik_matrix);
+                ai.setBattleshipsMediumHard(ref protivnik_matrix, Boats.boats);
             }
             else
             {
-                ai.setBattleshipsEasy(ref protivnik_matrix);
+                ai.setBattleshipsEasy(ref protivnik_matrix, Boats.boats);
             }
         }
 
@@ -124,8 +125,6 @@ namespace Potapanjebrodova
         private void OpponentMakesMove(string s)
         {
             //tu ide ai
-            int[] polje = { 1, 2, 3 };
-
             Tuple<int, int> tuple = new Tuple<int, int> (0,0);
             if(s == "easy")
             {
@@ -137,11 +136,18 @@ namespace Potapanjebrodova
                 tuple = ai.nextMoveIntermediate(Program.stanje);
             }
 
-            /*
             else
             {
-                tuple = ai.nextMoveHard(Program.stanje, polje);
-            }*/
+                List<int> lst = new List<int>();
+                for(int i = 0; i < 5; i++)
+                {
+                    if (!Boats.sinked[i])
+                    {
+                        lst.Add(Boats.boats[i]);
+                    }
+                }
+                tuple = ai.nextMoveHard(Program.stanje, lst);
+            }
 
             int x = tuple.Item1;
             int y = tuple.Item2;
@@ -154,6 +160,14 @@ namespace Potapanjebrodova
             {
                 hit = true;
                 Program.stanje[x, y] = State.HIT;
+                for(int i = 0; i < 5; i++)
+                {
+                    if (!Boats.sinked[i])
+                    {
+                        Boats.sinked[i] = Boats.checkIfSinked(i);
+                        if (Boats.sinked[i]) FileOperation.UpdateBrodovi(true);
+                    }
+                }
             }
 
             Boats.AddExplosionImage(panel1, x, y, hit);
@@ -176,21 +190,21 @@ namespace Potapanjebrodova
             FileOperation.UpdatePogodci(false);
         }
 
-        private bool shipSinked(int vel)
+        private bool shipSinked(int index)
         {
             int cnt = 0;
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 10; j++)
                 {
-                    if (kliknuto[i, j] && protivnik_matrix[i, j] == vel)
+                    if (kliknuto[i, j] && protivnik_matrix[i, j] - 1 == index)
                     {
                         cnt++;
                     }
                 }
             }
 
-            return (cnt == vel);
+            return (cnt == Boats.boats[index]);
         }
 
         private void MakeMove(int x, int y)
@@ -201,11 +215,13 @@ namespace Potapanjebrodova
             if (protivnik_matrix[x, y] != 0)
             {
                 ZapisiPogodak(x, y);
-                if (shipSinked(protivnik_matrix[x, y]))
+                if (shipSinked(protivnik_matrix[x, y] - 1))
                 {
-                    PotopioBrod(protivnik_matrix[x, y]);
-                    //ispis na ekran ako je brod potopljen, u protivnik_matrix[x, y] je 
-                    //velicina broda
+                    PotopioBrod(protivnik_matrix[x, y] - 1);
+                    potopljen[protivnik_matrix[x, y] - 1] = true;
+                    FileOperation.UpdateBrodovi(false);
+                    //ispis na ekran ako je brod potopljen, u protivnik_matrix[x, y] - 1 je 
+                    //index broda
                 }
             }
 
@@ -214,7 +230,21 @@ namespace Potapanjebrodova
                 ZapisiPromasaj(x, y);
             }
 
+            bool ret = false;
+            if (checkIfGameEnd())
+            {
+                FileOperation.UpdatePobjede(true);
+                MakeEndScreen(true);
+                ret = true;
+            }
+
             OpponentMakesMove(Program.tezina);
+
+            if (checkIfGameEnd() && !ret)
+            {
+                FileOperation.UpdatePobjede(false);
+                MakeEndScreen(false);
+            }
         }
 
         private void PotopioBrod(int brod_index)
@@ -230,7 +260,21 @@ namespace Potapanjebrodova
 
         private bool checkIfGameEnd()
         {
-            return false;
+            bool ret = true;
+            for(int  i = 0; i < 5; i++)
+            {
+                if (!Boats.sinked[i]) ret = false;
+            }
+
+            if (ret) return true;
+
+            ret = true;
+            for(int i = 0; i < 5; i++)
+            {
+                if (!potopljen[i]) ret = false;
+            }
+
+            return ret;
         }
         private void MakeEndScreen(bool igracJePobjedio)
         {
@@ -280,11 +324,20 @@ namespace Potapanjebrodova
         {
             InitializeComponent();
             InitializeLables();
-            InitializeMatrix(0);
+
+            if(Program.tezina == "easy")
+            {
+                InitializeMatrix(0);
+            }
+            else
+            {
+                InitializeMatrix(1);
+            }
+            
             RightMatrixFill();
             MakeAllLabelsClickable();
 
-            MakeEndScreen(true);
+            //MakeEndScreen(true);
         }
 
         private void ButtonOpenPocetniScreen_Click(object sender, EventArgs e)

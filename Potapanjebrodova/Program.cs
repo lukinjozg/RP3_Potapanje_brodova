@@ -20,8 +20,8 @@ namespace Potapanjebrodova
             Boats.igrac_matrix = new string[10, 10];
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form2());
-            //Application.Run(new pocetniScreen());
+            //Application.Run(new Form2());
+            Application.Run(new pocetniScreen());
         }
     }
 }
