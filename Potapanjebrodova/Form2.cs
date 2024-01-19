@@ -99,7 +99,7 @@ namespace Potapanjebrodova
             }
         }
 
-        //tu valjda postavimo brodove od protivnika
+        //tu postavimo brodove od protivnika
         private void InitializeMatrix(int lvl)
         {
             if (lvl > 0)
@@ -112,6 +112,7 @@ namespace Potapanjebrodova
             }
         }
 
+        //punjenje igraceve matrice da se vidi koji brodovi su pogodzeni
         private void RightMatrixFill()
         {
             for (int i = 0; i < 5; i++)
@@ -149,6 +150,7 @@ namespace Potapanjebrodova
                 tuple = ai.nextMoveHard(Program.stanje, lst);
             }
 
+            //ai tu puca torpedo
             int x = tuple.Item1;
             int y = tuple.Item2;
             
@@ -173,6 +175,7 @@ namespace Potapanjebrodova
             Boats.AddExplosionImage(panel1, x, y, hit);
         }
 
+        //funckije za plocu gjde igrac gađa
         private void ZapisiPogodak(int x, int y)
         {
             labels[10 * x + y].Text = "X";
@@ -230,6 +233,7 @@ namespace Potapanjebrodova
                 ZapisiPromasaj(x, y);
             }
 
+            //nakon svakog poteza treba vidjeti jel igra zavrsila
             bool ret = false;
             if (checkIfGameEnd())
             {
@@ -247,6 +251,7 @@ namespace Potapanjebrodova
             }
         }
 
+        //označava se koji su protivnikovi brodovi potopljeni
         private void PotopioBrod(int brod_index)
         {
             Bitmap img = Properties.Resources.ResourceManager.GetObject("explosion") as Bitmap;
@@ -276,6 +281,8 @@ namespace Potapanjebrodova
 
             return ret;
         }
+
+        //ovo napravi zalon kada igra zavrsi
         private void MakeEndScreen(bool igracJePobjedio)
         {
             foreach (Control control in this.Controls)
@@ -336,10 +343,9 @@ namespace Potapanjebrodova
             
             RightMatrixFill();
             MakeAllLabelsClickable();
-
-            //MakeEndScreen(true);
         }
 
+        //funckije za zatvaranje forme i otvaranje nove
         private void ButtonOpenPocetniScreen_Click(object sender, EventArgs e)
         {
             Thread th;

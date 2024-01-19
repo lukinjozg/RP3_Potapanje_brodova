@@ -8,7 +8,6 @@ namespace Potapanjebrodova
 {
     internal static class Program
     {
-        
         public static string tezina = "";
         public static State[,] stanje = new State[10, 10];
         /// <summary>
@@ -20,7 +19,7 @@ namespace Potapanjebrodova
             Boats.igrac_matrix = new string[10, 10];
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Form2());
+  
             Application.Run(new pocetniScreen());
         }
     }

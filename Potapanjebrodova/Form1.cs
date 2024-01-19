@@ -34,8 +34,10 @@ namespace Potapanjebrodova
 
         private void InitializeLablesAndButtons()
         {
+            //gumb za krenuti sa igrom, prvo ga sakrimo
             PlayButton.Click += ButtonOpenForm2_Click;
             PlayButton.Visible = false;
+
             for (int i = 0; i < 10; i++)
             {
                 for (int j = 0; j < 10; j++)
@@ -56,6 +58,7 @@ namespace Potapanjebrodova
 
             Bitmap img;
 
+            //tu brodove postavimo kao gumbe
             for (int i = 0; i < 5; i++)
             {
                 int k = i;
@@ -69,6 +72,7 @@ namespace Potapanjebrodova
                 buttons[i].Image = img;
             }
 
+            //postavljanje pozadine
             img = Properties.Resources.ResourceManager.GetObject("stormysea") as Bitmap;
 
             this.BackgroundImage = img;
@@ -79,12 +83,10 @@ namespace Potapanjebrodova
         {
             InitializeMatrix();
             InitializeComponent();
-
             InitializeLablesAndButtons();
         }
 
-        
-
+       
         private void PlaceBoat(int i1, int j1, int i2, int j2, int boat_index)
         {
             int boat_size = Boats.boats[boat_index] - 1;
@@ -104,6 +106,7 @@ namespace Potapanjebrodova
                 }
             }
 
+            //mijenjamo redosljed koordinata da možemo ispisati normalno pozicije brodova u igrac_matrix
             Boats.PoredajMinPaMax(ref i1, ref i2);
             Boats.PoredajMinPaMax(ref j1, ref j2);
 
@@ -123,6 +126,7 @@ namespace Potapanjebrodova
 
             Boats.AddBoatImageToPanel(panel1,$"boat{boat_index}", i1, j1, i2, j2);
 
+            //onemogućili smo klikanje na brodove, i sad ga omogućujemo opet za brodove koje jos treba postaviti
             bool flag = false;
             for (int i = 0; i < 5; i++)
             {
@@ -137,12 +141,14 @@ namespace Potapanjebrodova
                 }
             }
 
+            //tu gledamo ako su svi brodovi postavljeni onda je vrijeme za pokrenuti igru
             if (!flag)
             {
                 PlayButton.Visible = true;
             }
         }
 
+        //tu biramo od kuda ćemo krenuti s postavljanjem broda, gdje ćemo mu neki kraj postaviti
         private void SelectBoat(int boat_index)
         {
             for (int i = 0; i < 10; i++)
@@ -153,6 +159,7 @@ namespace Potapanjebrodova
 
                     if (Boats.igrac_matrix[x, y] == "")
                     {
+                        //provjeravamo da ako je tu prvi kraj broda, ima li igdje mjesta za drugi kraj
                         if (Boats.CheckIfBoatCanStartHere(x, y, Boats.boats[boat_index]))
                         {
                             LabelHandler[x * 10 + y] = (sender, e) => WhereToPlaceBoat(x, y, boat_index);
@@ -162,6 +169,7 @@ namespace Potapanjebrodova
                 }
             }
 
+            //drugi gumbi se nemogu kliknuti dok s ebrod postavlja
             for (int i = 0; i < 5; i++)
             {
                 int k = i;
@@ -169,7 +177,7 @@ namespace Potapanjebrodova
             }
         }
 
-
+        //postavljanje drugog ruba broda broda
         private void WhereToPlaceBoat(int x, int y, int boat_index)
         {
             for (int i = 0; i < 10; i++)
@@ -183,6 +191,7 @@ namespace Potapanjebrodova
 
             buttons[boat_index].Visible = false;
             existing_buttons[boat_index] = false;
+
             int boat_size = Boats.boats[boat_index] - 1;
 
             labels[10 * x + y].BackColor = Color.FromArgb(128, Color.Orange);
@@ -203,6 +212,7 @@ namespace Potapanjebrodova
             }
         }
 
+        //otvaranje nove forme
         private void ButtonOpenForm2_Click(object sender, EventArgs e)
         {
             Thread th;

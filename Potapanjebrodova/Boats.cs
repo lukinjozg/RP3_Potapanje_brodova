@@ -10,8 +10,12 @@ namespace Potapanjebrodova
 {
     public partial class Boats
     {
+        //gdje su postavljeni igracevi brodovi
         public static string[,] igrac_matrix = new string[10, 10];
+
+        //velicine brodova
         public static int[] boats = new int[] { 2, 3, 3, 4, 5 };
+
         public static string[] boat_names = new string[] { "A", "B", "C", "D", "E" };
         public static int[,] boat_pos = new int[5, 4];
         public static bool[] sinked = new bool[5];
@@ -126,6 +130,7 @@ namespace Potapanjebrodova
 
         public static void AddBoatImageToPanel(Panel panel, string picture_name, int x1, int y1, int x2, int y2)
         {
+            //duljnie i sirine brodova
             int ly = x2 - x1;
             int lx = y2 - y1;
 
@@ -157,6 +162,7 @@ namespace Potapanjebrodova
 
         public static void AddExplosionImage(Panel panel,int x, int y, bool hit)
         {
+            //hit označava ako je nešto pogodio ili ne
             int w = panel.Width / 10;
             int h = panel.Height / 10;
 
@@ -180,6 +186,8 @@ namespace Potapanjebrodova
             }
 
             panel.Controls.Add(picture);
+
+            //tu dodajemo visu razinu slike na ostale slike
             panel.Controls.SetChildIndex(picture, 0);
         }
     }

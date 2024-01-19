@@ -27,6 +27,8 @@ namespace Potapanjebrodova
              * Pogoci
              * Postotak Pogodaka
              */
+
+            //ucitavanjae statistika
             string[] lines = File.ReadAllLines("userStats.txt");
             lines = lines.Take(lines.Length - 1).ToArray();
             string currUserStats = "\r\n" + string.Join("\r\n\r\n", lines);
@@ -53,6 +55,7 @@ namespace Potapanjebrodova
             closeForm();
         }
 
+        //otvranja nove forme
         private void closeForm()
         {
             Thread th;

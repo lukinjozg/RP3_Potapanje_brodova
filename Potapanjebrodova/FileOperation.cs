@@ -10,6 +10,8 @@ namespace Potapanjebrodova
     internal class FileOperation
     {
         public static string filePath = "userStats.txt";
+        
+        //pogodak je true onda je pogodak zapisan inace promasaj
         public static void UpdatePogodci(bool pogodak)
         {
             int hits, misses;
@@ -43,6 +45,7 @@ namespace Potapanjebrodova
 
         }
 
+        //win je true onda je pogodak zapisan inace promasaj
         public static void UpdatePobjede(bool win)
         {
             int wins, loses;
@@ -75,6 +78,7 @@ namespace Potapanjebrodova
             UpdateLine(3, $"Porazi: {loses}");
         }
 
+        //moj_brod_potonuo je true onda je igracev brod potopljen
         public static void UpdateBrodovi(bool moj_brod_potonuo)
         {
             int potopljeno, potonulo;
