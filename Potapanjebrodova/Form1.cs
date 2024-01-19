@@ -96,18 +96,6 @@ namespace Potapanjebrodova
             this.BackgroundImageLayout = ImageLayout.Stretch;
         }
 
-        private void ChangeLabelsToMatchMatix(string[,] matrix)
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                for (int j = 0; j < 10; j++)
-                {
-                    int x = i, y = j;
-                    labels[x * 10 + y].Text = matrix[x, y];
-                }
-            }
-        }
-
         public Form1()
         {
             InitializeMatrix();

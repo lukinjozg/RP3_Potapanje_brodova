@@ -55,7 +55,7 @@ namespace Potapanjebrodova
 
 
             picture.Size = new Size(w, h);
-            picture.Location = new Point(w * x, h * y);
+            picture.Location = new Point(w * y, h * x);
             picture.SizeMode = PictureBoxSizeMode.StretchImage;
             if (hit)
             {

@@ -203,9 +203,9 @@ namespace Potapanjebrodova.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap hardDiffculty {
+        internal static System.Drawing.Bitmap hardDifficulty {
             get {
-                object obj = ResourceManager.GetObject("hardDiffculty", resourceCulture);
+                object obj = ResourceManager.GetObject("hardDifficulty", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

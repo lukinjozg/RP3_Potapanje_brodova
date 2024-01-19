@@ -16,11 +16,17 @@ namespace Potapanjebrodova
     {
         private Label[] labels = new Label[100];
         private PictureBox[] pics = new PictureBox[10];
-        private string[,] protivnik_matrix = new string[10, 10];
         private EventHandler[] LabelHandler = new EventHandler[100];
+
+        private readonly AutoResetEvent _resetEvent = new AutoResetEvent(false);
+        private int[,] protivnik_matrix = new int[10, 10];
+        private bool[,] kliknuto = new bool[10, 10];
+        
+        
         private AI ai = new AI();
         private void InitializeLables()
         {
+            //Postavljanje labela na tablelayoutpanel
             for (int i = 0; i < 100; i++)
             {
                 labels[i] = Controls.Find($"label{i + 1}", true)[0] as Label;
@@ -39,6 +45,7 @@ namespace Potapanjebrodova
                 labels[k].TextAlign = ContentAlignment.MiddleCenter;
             }
 
+            //uljepsavanje prozora
             Bitmap img = Properties.Resources.ResourceManager.GetObject("moregrid") as Bitmap;
 
             panel1.BackgroundImage = img;
@@ -54,6 +61,7 @@ namespace Potapanjebrodova
             this.BackgroundImage = img;
             this.BackgroundImageLayout = ImageLayout.Stretch;
 
+            //postavljanje slika brodova
             for (int i = 0; i < 5; i++)
             {
                 int k = i;
@@ -64,6 +72,18 @@ namespace Potapanjebrodova
                 pics[k].Image = img;
                 pics[k].BackColor = Color.Transparent;
                 pics[k].SizeMode = PictureBoxSizeMode.StretchImage;
+            }
+
+            //Postavljanje slika tezine i protivnika
+            img = Properties.Resources.ResourceManager.GetObject(Program.tezina + "Difficulty") as Bitmap;
+            pictureBox1.Image = img;
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            label101.Text = "Protivnik: " + Program.tezina;
+
+            for (int i = 0;i < 10;i++)
+            {
+
             }
         }
 
@@ -80,28 +100,16 @@ namespace Potapanjebrodova
             }
         }
 
-        private void RemoveClicksFromAllLabels()
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                for (int j = 0; j < 10; j++)
-                {
-                    int x = i, y = j;
-                    labels[x * 10 + y].Click -= LabelHandler[x * 10 + y];
-                }
-            }
-        }
         //tu valjda postavimo brodove od protivnika
         private void InitializeMatrix(int lvl)
         {
-            int[,] shipPositions = new int[10, 10];
             if (lvl > 0)
             {
-                ai.setBattleshipsMediumHard(ref shipPositions);
+                ai.setBattleshipsMediumHard(ref protivnik_matrix);
             }
             else
             {
-                ai.setBattleshipsEasy(ref shipPositions);
+                ai.setBattleshipsEasy(ref protivnik_matrix);
             }
         }
 
@@ -113,16 +121,44 @@ namespace Potapanjebrodova
 
                 Boats.AddBoatImageToPanel(panel1,$"boat{k}", Program.boat_pos[k, 0], Program.boat_pos[k, 1], Program.boat_pos[k, 2], Program.boat_pos[k, 3]);
             }
-
-            Boats.AddExplosionImage(panel1,0, 0, false);
         }
 
-        async Task OpponentMakesMove(string s)
+        private void OpponentMakesMove(string s)
         {
             //tu ide ai
+            int[] polje = { 1, 2, 3 };
 
-            await Task.Delay(5000);
-            MakeAllLabelsClickable();
+            Tuple<int, int> tuple = new Tuple<int, int> (0,0);
+            if(s == "easy")
+            {
+                tuple = ai.nextMoveEasy(Program.stanje);
+            }
+
+            else if (s == "medium")
+            {
+                tuple = ai.nextMoveIntermediate(Program.stanje);
+            }
+
+            /*
+            else
+            {
+                tuple = ai.nextMoveHard(Program.stanje, polje);
+            }*/
+
+            int x = tuple.Item1;
+            int y = tuple.Item2;
+            
+            bool hit = false;
+
+            Program.stanje[x,y] = State.MISSED;
+
+            if (Boats.igrac_matrix[x, y] != "")
+            {
+                hit = true;
+                Program.stanje[x, y] = State.HIT;
+            }
+
+            Boats.AddExplosionImage(panel1, x, y, hit);
         }
 
         private void ZapisiPogodak(int x, int y)
@@ -130,6 +166,7 @@ namespace Potapanjebrodova
             labels[10 * x + y].Text = "X";
             labels[10 * x + y].ForeColor = Color.Red;
             labels[10 * x + y].BackColor = Color.FromArgb(128, Color.Red);
+            FileOperation.UpdatePogodci(true);
 
         }
 
@@ -138,13 +175,39 @@ namespace Potapanjebrodova
             labels[10 * x + y].Text = "O";
             labels[10 * x + y].ForeColor = Color.White;
             labels[10 * x + y].BackColor = Color.FromArgb(128, Color.White);
+            FileOperation.UpdatePogodci(false);
+        }
+
+        private bool shipSinked(int vel)
+        {
+            int cnt = 0;
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    if (kliknuto[i, j] && protivnik_matrix[i, j] == vel)
+                    {
+                        cnt++;
+                    }
+                }
+            }
+
+            return (cnt == vel);
         }
 
         private void MakeMove(int x, int y)
         {
-            if (protivnik_matrix[x, y] != "")
+            if (kliknuto[x, y]) return;
+
+            kliknuto[x, y] = true;
+            if (protivnik_matrix[x, y] != 0)
             {
                 ZapisiPogodak(x, y);
+                if (shipSinked(protivnik_matrix[x, y]))
+                {
+                    //ispis na ekran ako je brod potopljen, u protivnik_matrix[x, y] je 
+                    //velicina broda
+                }
             }
 
             else
@@ -152,9 +215,12 @@ namespace Potapanjebrodova
                 ZapisiPromasaj(x, y);
             }
 
-            RemoveClicksFromAllLabels();
+            OpponentMakesMove(Program.tezina);
+        }
 
-            OpponentMakesMove(/* Tu kasnije ide tezina koja je zapisana u Program.tezina*/"tezina");
+        private void PotopiBrod(int brod_index)
+        {
+
         }
 
         public Form2()
