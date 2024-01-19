@@ -284,11 +284,11 @@ namespace Potapanjebrodova
             }
 
             Label label = new Label();
-            string text = "Čestitam, pobjedili ste :).";
+            string text = "Čestitam, pobjedili ste :)";
 
             if (!igracJePobjedio)
             {
-                text = "Nažalost,protivnik je pobjedio :(.";
+                text = "Nažalost, protivnik je pobjedio :(";
             }
             
             label.Text = text;
