@@ -62,16 +62,19 @@ namespace Potapanjebrodova
             this.BackgroundImageLayout = ImageLayout.Stretch;
 
             //postavljanje slika brodova
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 10; i++)
             {
                 int k = i;
                 pics[k] = Controls.Find($"pictureBox{i + 2}", true)[0] as PictureBox;
 
-                img = Properties.Resources.ResourceManager.GetObject($"boat{k}H") as Bitmap;
+                if(k < 5)
+                {
+                    img = Properties.Resources.ResourceManager.GetObject($"boat{k}H") as Bitmap;
 
-                pics[k].Image = img;
-                pics[k].BackColor = Color.Transparent;
-                pics[k].SizeMode = PictureBoxSizeMode.StretchImage;
+                    pics[k].Image = img;
+                    pics[k].BackColor = Color.Transparent;
+                    pics[k].SizeMode = PictureBoxSizeMode.StretchImage;
+                }  
             }
 
             //Postavljanje slika tezine i protivnika
@@ -80,11 +83,6 @@ namespace Potapanjebrodova
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
 
             label101.Text = "Protivnik: " + Program.tezina;
-
-            for (int i = 0;i < 10;i++)
-            {
-
-            }
         }
 
         private void MakeAllLabelsClickable()
@@ -205,6 +203,7 @@ namespace Potapanjebrodova
                 ZapisiPogodak(x, y);
                 if (shipSinked(protivnik_matrix[x, y]))
                 {
+                    PotopioBrod(protivnik_matrix[x, y]);
                     //ispis na ekran ako je brod potopljen, u protivnik_matrix[x, y] je 
                     //velicina broda
                 }
@@ -218,9 +217,63 @@ namespace Potapanjebrodova
             OpponentMakesMove(Program.tezina);
         }
 
-        private void PotopiBrod(int brod_index)
+        private void PotopioBrod(int brod_index)
         {
+            Bitmap img = Properties.Resources.ResourceManager.GetObject("explosion") as Bitmap;
 
+            int index = 5 + brod_index;
+
+            pics[index].Image = img;
+            pics[index].SizeMode = PictureBoxSizeMode.StretchImage;
+            pics[index].BackColor = Color.FromArgb(128, Color.Red);
+        }
+
+        private bool checkIfGameEnd()
+        {
+            return false;
+        }
+        private void MakeEndScreen(bool igracJePobjedio)
+        {
+            foreach (Control control in this.Controls)
+            {
+                control.Visible = false;
+            }
+
+            Label label = new Label();
+            string text = "Čestitam, pobjedili ste :).";
+
+            if (!igracJePobjedio)
+            {
+                text = "Nažalost,protivnik je pobjedio :(.";
+            }
+            
+            label.Text = text;
+            label.Font = new Font("Arial", 30, FontStyle.Bold);
+
+            label.Size = new Size(300, 180);
+            label.TextAlign = ContentAlignment.MiddleCenter;
+
+            int x = (this.Width - label.Width) / 2;
+            int y = this.Height / 2 - label.Height;
+
+            label.Location = new Point(x, y);
+
+            this.Controls.Add(label);
+
+            Button but = new Button();
+
+            but.Text = "Početni meni";
+            but.Font = new Font("Arial", 12, FontStyle.Bold);
+            but.Size = new Size(100, 60);
+            but.TextAlign = ContentAlignment.MiddleCenter;
+
+            x = (this.Width - but.Width) / 2;
+            y = this.Height / 2 + but.Height;
+
+            but.Location = new Point(x, y);
+            but.Click += ButtonOpenPocetniScreen_Click;
+
+            this.Controls.Add(but);
         }
 
         public Form2()
@@ -230,6 +283,22 @@ namespace Potapanjebrodova
             InitializeMatrix(0);
             RightMatrixFill();
             MakeAllLabelsClickable();
+
+            MakeEndScreen(true);
+        }
+
+        private void ButtonOpenPocetniScreen_Click(object sender, EventArgs e)
+        {
+            Thread th;
+            this.Close();
+            th = new Thread(OpenForm);
+            th.SetApartmentState(ApartmentState.STA);
+            th.Start();
+        }
+
+        private void OpenForm()
+        {
+            Application.Run(new pocetniScreen());
         }
     }
 }

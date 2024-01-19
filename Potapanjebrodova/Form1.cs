@@ -14,7 +14,6 @@ namespace Potapanjebrodova
 {
     public partial class Form1 : Form
     {
-        private Thread th;
         private readonly Label[] labels = new Label[100];
         private readonly Button[] buttons = new Button[5];
         private readonly EventHandler[] ButtonHandler = new EventHandler[5];
@@ -206,6 +205,7 @@ namespace Potapanjebrodova
 
         private void ButtonOpenForm2_Click(object sender, EventArgs e)
         {
+            Thread th;
             this.Close();
             th = new Thread(OpenForm);
             th.SetApartmentState(ApartmentState.STA);

@@ -14,7 +14,6 @@ namespace Potapanjebrodova
 {
     public partial class pocetniScreen : Form
     {
-        Thread th;
         public pocetniScreen()
         {
             InitializeComponent();
@@ -55,6 +54,7 @@ namespace Potapanjebrodova
 
         private void closeForm()
         {
+            Thread th;
             this.Close();
             th = new Thread(OpenForm);
             th.SetApartmentState(ApartmentState.STA);

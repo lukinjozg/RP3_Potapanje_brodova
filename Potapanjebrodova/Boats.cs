@@ -23,7 +23,6 @@ namespace Potapanjebrodova
             boat_pos[boat_index, 3] = y2;
         }
 
-
         public static bool InBoard(int i, int j)
         {
             return (i >= 0 && i < 10 && j >= 0 && j < 10);
